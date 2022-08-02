@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculatrice</title>
+    <!-- Import style.css -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div class="container"  id="app">
+        <div class="blurBackground"></div>
+        <div class="phone">
+          <div class="toggleButton Button"></div>
+          <div class="volumeButtonUp Button"></div>
+          <div class="volumeButtonDown Button"></div>
+          <div class="powerButton Button"></div>
+          <div class="glares">
+            <div class="horizontalGlare">
+              <div class="glare1"></div>
+            </div>
+            <div class="verticalGlare">
+              <div class="glare2"></div>
+            </div>
+          </div>
+          <div class="screen">
+            <!-- Import l'affichage du calcul -->
+            <affichage-display :num1="num1" :operateur="operateur" :calcul="calcul"></affichage-display>
+            <!-- Import des buttons -->
+            <calcul-display @supprallnumber="supprAllNum" @supprnumber="supprNum" @addegal="lireResultat" @addoperateur="addOperateur" @addvirgule="addVirgule" @calculaffiche="lireCalcul"></calcul-display>
+            <!-- Import Historique de calcul -->
+            <historique-display @recupresultat="reprendreRes" :tableau="tableau"></historique-display> 
+            <div class="strip">
+              <div class="circleHolder">
+                <div class="circle1"></div>
+                <div class="circle2"></div>  
+              </div>
+              <div class="stripItems">
+                <div class="camera"></div>
+                <div class="camera second"></div>
+                <div class="speaker"></div>
+                <div class="prox ir"></div>
+                <div class="prox"></div>
+              </div>
+            </div>
+          </div>
+        </div>   
+    </div>
+    <!-- Import App -->
+    <script src="main.js"></script>
+    <script src="components/calculDisplay.js"></script>
+    <script src="components/affichageDisplay.js"></script>
+    <script src="components/historiqueDisplay.js"></script>
+
+    <!-- Mount App -->
+    <script>
+        const mountedApp = app.mount('#app')
+      </script>
+</body>
+</html>
